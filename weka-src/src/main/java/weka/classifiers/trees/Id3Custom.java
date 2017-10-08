@@ -14,7 +14,7 @@
  */
 
 /*
- *    Id3.java
+ *    Id3Custom.java
  *    Copyright (C) 1999 University of Waikato, Hamilton, New Zealand
  *
  */
@@ -40,7 +40,8 @@ import weka.core.Utils;
 
 /**
  * <!-- globalinfo-start --> Class for constructing an unpruned decision tree
- * based on the ID3 algorithm. Can only deal with nominal attributes. No missing
+ * based on the ID3 algorithm. This custom version uses the Havrda-Charvat entropy instead of the Shanon entropy. 
+ * Can only deal with nominal attributes. No missing
  * values allowed. Empty leaves may result in unclassified instances. For more
  * information see: <br/>
  * <br/>
@@ -79,14 +80,14 @@ import weka.core.Utils;
  * @author Eibe Frank (eibe@cs.waikato.ac.nz)
  * @version $Revision$
  */
-public class Id3 extends AbstractClassifier implements
+public class Id3Custom extends AbstractClassifier implements
   TechnicalInformationHandler, Sourcable {
 
   /** for serialization */
   static final long serialVersionUID = -2693678647096322561L;
 
   /** The node's successors. */
-  private Id3[] m_Successors;
+  private Id3Custom[] m_Successors;
 
   /** Attribute used for splitting. */
   private Attribute m_Attribute;
@@ -100,6 +101,9 @@ public class Id3 extends AbstractClassifier implements
   /** Class attribute of dataset. */
   private Attribute m_ClassAttribute;
 
+  /** Default alpha value used to compute the Havrda-Charvat entropy*/
+  private float m_alpha = 0.5f;
+  
   /**
    * Returns a string describing the classifier.
    *
@@ -107,10 +111,34 @@ public class Id3 extends AbstractClassifier implements
    */
   public String globalInfo() {
 
-    return "Class for constructing an unpruned decision tree based on the ID3 "
-      + "algorithm. Can only deal with nominal attributes. No missing values "
+    return "Class for constructing an unpruned decision tree based on the ID3 algorithm. "
+      + "This custom version uses the Havrda-Charvat entropy instead of the Shanon entropy.
+      + "Can only deal with nominal attributes. No missing values "
       + "allowed. Empty leaves may result in unclassified instances. For more "
       + "information see: \n\n" + getTechnicalInformation().toString();
+  }
+  
+  /**
+  * Returns the value of alpha used to compute the Havdra et Charva entropy.
+  *
+  * @return the value of alpha used to compute the Havdra et Charva entropy.
+  */
+  public static float getAlpha() {
+  	return m_alpha;
+  }
+  
+  /**
+  * Set the value of alpha if the value provided is in the given bounds.
+  * The value of alpha is used to compute the Havrda et Charva entropy.
+  * 
+  * @param alpha value to set alpha
+  */
+  public static void setAlpha(float alpha) {
+  	if (alpha > 0 && alpha != 1) {
+  		Id3Modified.m_alpha = alpha;
+  	} else {
+  		Id3Modified.m_alpha = 0.5f;
+  	}
   }
 
   /**
@@ -160,7 +188,7 @@ public class Id3 extends AbstractClassifier implements
   }
 
   /**
-   * Builds Id3 decision tree classifier.
+   * Builds Id3Custom decision tree classifier.
    *
    * @param data the training data
    * @exception Exception if classifier can't be built successfully
@@ -179,7 +207,7 @@ public class Id3 extends AbstractClassifier implements
   }
 
   /**
-   * Method for building an Id3 tree.
+   * Method for building an Id3Custom tree.
    *
    * @param data the training data
    * @exception Exception if decision tree can't be built successfully
@@ -218,9 +246,9 @@ public class Id3 extends AbstractClassifier implements
       m_ClassAttribute = data.classAttribute();
     } else {
       Instances[] splitData = splitData(data, m_Attribute);
-      m_Successors = new Id3[m_Attribute.numValues()];
+      m_Successors = new Id3Custom[m_Attribute.numValues()];
       for (int j = 0; j < m_Attribute.numValues(); j++) {
-        m_Successors[j] = new Id3();
+        m_Successors[j] = new Id3Custom();
         m_Successors[j].makeTree(splitData[j]);
       }
     }
@@ -238,7 +266,7 @@ public class Id3 extends AbstractClassifier implements
     throws NoSupportForMissingValuesException {
 
     if (instance.hasMissingValue()) {
-      throw new NoSupportForMissingValuesException("Id3: no missing values, "
+      throw new NoSupportForMissingValuesException("Id3Custom: no missing values, "
         + "please.");
     }
     if (m_Attribute == null) {
@@ -261,7 +289,7 @@ public class Id3 extends AbstractClassifier implements
     throws NoSupportForMissingValuesException {
 
     if (instance.hasMissingValue()) {
-      throw new NoSupportForMissingValuesException("Id3: no missing values, "
+      throw new NoSupportForMissingValuesException("Id3Custom: no missing values, "
         + "please.");
     }
     if (m_Attribute == null) {
@@ -281,9 +309,9 @@ public class Id3 extends AbstractClassifier implements
   public String toString() {
 
     if ((m_Distribution == null) && (m_Successors == null)) {
-      return "Id3: No model built yet.";
+      return "Id3Custom: No model built yet.";
     }
-    return "Id3\n\n" + toString(0);
+    return "Id3Custom\n\n" + toString(0);
   }
 
   /**
@@ -326,11 +354,10 @@ public class Id3 extends AbstractClassifier implements
     double entropy = 0;
     for (int j = 0; j < data.numClasses(); j++) {
       if (classCounts[j] > 0) {
-        entropy -= classCounts[j] * Utils.log2(classCounts[j]);
+        entropy += ( Math.pow(classCounts[j] / (double)data.numInstances(), m_alpha) - 1);
       }
     }
-    entropy /= data.numInstances();
-    return entropy + Utils.log2(data.numInstances());
+    return entropy * Math.pow(Math.pow(2.,1.-m_alpha)-1., -1.);
   }
 
   /**
@@ -514,6 +541,6 @@ public class Id3 extends AbstractClassifier implements
    * @param args the options for the classifier
    */
   public static void main(String[] args) {
-    runClassifier(new Id3(), args);
+    runClassifier(new Id3Custom(), args);
   }
 }

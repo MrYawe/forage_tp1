@@ -40,7 +40,7 @@ import weka.core.Utils;
 
 /**
  * <!-- globalinfo-start --> Class for constructing an unpruned decision tree
- * based on the ID3 algorithm. This custom version uses the Havrda-Charvat entropy instead of the Shanon entropy. 
+ * based on the ID3 algorithm. This custom version uses the Havrda-Charvat entropy instead of the Shanon entropy.
  * Can only deal with nominal attributes. No missing
  * values allowed. Empty leaves may result in unclassified instances. For more
  * information see: <br/>
@@ -102,8 +102,8 @@ public class Id3Custom extends AbstractClassifier implements
   private Attribute m_ClassAttribute;
 
   /** Default alpha value used to compute the Havrda-Charvat entropy*/
-  private float m_alpha = 0.5f;
-  
+  private static float m_alpha = 0.5f;
+
   /**
    * Returns a string describing the classifier.
    *
@@ -112,12 +112,12 @@ public class Id3Custom extends AbstractClassifier implements
   public String globalInfo() {
 
     return "Class for constructing an unpruned decision tree based on the ID3 algorithm. "
-      + "This custom version uses the Havrda-Charvat entropy instead of the Shanon entropy.
+      + "This custom version uses the Havrda-Charvat entropy instead of the Shanon entropy."
       + "Can only deal with nominal attributes. No missing values "
       + "allowed. Empty leaves may result in unclassified instances. For more "
       + "information see: \n\n" + getTechnicalInformation().toString();
   }
-  
+
   /**
   * Returns the value of alpha used to compute the Havdra et Charva entropy.
   *
@@ -126,18 +126,18 @@ public class Id3Custom extends AbstractClassifier implements
   public static float getAlpha() {
   	return m_alpha;
   }
-  
+
   /**
   * Set the value of alpha if the value provided is in the given bounds.
   * The value of alpha is used to compute the Havrda et Charva entropy.
-  * 
+  *
   * @param alpha value to set alpha
   */
   public static void setAlpha(float alpha) {
   	if (alpha > 0 && alpha != 1) {
-  		Id3Modified.m_alpha = alpha;
+  		Id3Custom.m_alpha = alpha;
   	} else {
-  		Id3Modified.m_alpha = 0.5f;
+  		Id3Custom.m_alpha = 0.5f;
   	}
   }
 

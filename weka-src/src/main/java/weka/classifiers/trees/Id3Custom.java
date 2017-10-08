@@ -21,7 +21,9 @@
 
 package weka.classifiers.trees;
 
+import java.util.Collections;
 import java.util.Enumeration;
+import java.util.Vector;
 
 import weka.classifiers.AbstractClassifier;
 import weka.classifiers.Sourcable;
@@ -31,6 +33,8 @@ import weka.core.Capabilities.Capability;
 import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.NoSupportForMissingValuesException;
+import weka.core.Option;
+import weka.core.OptionHandler;
 import weka.core.RevisionUtils;
 import weka.core.TechnicalInformation;
 import weka.core.TechnicalInformation.Field;
@@ -81,7 +85,7 @@ import weka.core.Utils;
  * @version $Revision$
  */
 public class Id3Custom extends AbstractClassifier implements
-  TechnicalInformationHandler, Sourcable {
+  TechnicalInformationHandler, Sourcable, OptionHandler {
 
   /** for serialization */
   static final long serialVersionUID = -2693678647096322561L;
@@ -102,7 +106,7 @@ public class Id3Custom extends AbstractClassifier implements
   private Attribute m_ClassAttribute;
 
   /** Default alpha value used to compute the Havrda-Charvat entropy*/
-  private static float m_alpha = 0.5f;
+  protected float m_alpha = 0.5f;
 
   /**
    * Returns a string describing the classifier.
@@ -119,11 +123,21 @@ public class Id3Custom extends AbstractClassifier implements
   }
 
   /**
+   * Returns the tip text for this property
+   *
+   * @return tip text for this property suitable for displaying in the
+   *         explorer/experimenter gui
+   */
+  public String alphaTipText() {
+    return "The alpha factor used for ...";
+  }
+
+  /**
   * Returns the value of alpha used to compute the Havdra et Charva entropy.
   *
   * @return the value of alpha used to compute the Havdra et Charva entropy.
   */
-  public static float getAlpha() {
+  public float getAlpha() {
   	return m_alpha;
   }
 
@@ -133,11 +147,11 @@ public class Id3Custom extends AbstractClassifier implements
   *
   * @param alpha value to set alpha
   */
-  public static void setAlpha(float alpha) {
+  public void setAlpha(float alpha) {
   	if (alpha > 0 && alpha != 1) {
-  		Id3Custom.m_alpha = alpha;
+  		m_alpha = alpha;
   	} else {
-  		Id3Custom.m_alpha = 0.5f;
+  		m_alpha = 0.5f;
   	}
   }
 
@@ -542,5 +556,51 @@ public class Id3Custom extends AbstractClassifier implements
    */
   public static void main(String[] args) {
     runClassifier(new Id3Custom(), args);
+  }
+
+
+  @Override
+  public Enumeration<Option> listOptions() {
+    Vector<Option> newVector = new Vector<Option>(1);
+
+    newVector.addElement(new Option("\tSet alpha.\n"
+      + "\t(default 0.5)", "A", 1, "-A <alpha>"));
+    newVector.addAll(Collections.list(super.listOptions()));
+
+    return newVector.elements();
+  }
+
+  @Override
+  public void setOptions(String[] options) throws Exception {
+    String alphaString = Utils.getOption('A', options);
+    if (alphaString.length() != 0) {
+      m_alpha = (new Float(alphaString)).floatValue();
+      if ((m_alpha <= 0) || (m_alpha >= 1)) {
+        throw new Exception(
+          "Alpha has to be greater than zero and smaller " + "than one!");
+      }
+    } else {
+      m_alpha = 0.5f;
+    }
+
+    super.setOptions(options);
+    Utils.checkForRemainingOptions(options);
+  }
+
+  /**
+   * Gets the current settings of the Classifier.
+   *
+   * @return an array of strings suitable for passing to setOptions
+   */
+  @Override
+  public String[] getOptions() {
+
+    Vector<String> options = new Vector<String>();
+    options.add("-A");
+    options.add("" + m_alpha);
+
+    Collections.addAll(options, super.getOptions());
+
+    return options.toArray(new String[0]);
   }
 }

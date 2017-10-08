@@ -1,7 +1,7 @@
 # Customises the list of options given by the GenericObjectEditor
 #
 # Thu Jun 19 02:47:27 GMT 2008
- 
+
 # Lists the SearchAlgorithms I want to choose from
 weka.classifiers.bayes.net.search.SearchAlgorithm=\
  weka.classifiers.bayes.net.search.local.GeneticSearch,\
@@ -23,13 +23,13 @@ weka.classifiers.bayes.net.search.SearchAlgorithm=\
  weka.classifiers.bayes.net.search.global.TAN,\
  weka.classifiers.bayes.net.search.fixed.FromFile,\
  weka.classifiers.bayes.net.search.fixed.NaiveBayes
- 
+
 # Lists the ResultListeners I want to choose from
 weka.experiment.ResultListener=\
  weka.experiment.CSVResultListener,\
  weka.experiment.DatabaseResultListener,\
  weka.experiment.InstancesResultListener
- 
+
 # Lists the Savers I want to choose from
 weka.core.converters.Saver=\
  weka.core.converters.ArffSaver,\
@@ -40,14 +40,14 @@ weka.core.converters.Saver=\
  weka.core.converters.MatlabSaver,\
  weka.core.converters.SerializedInstancesSaver,\
  weka.core.converters.XRFFSaver
- 
+
 # Lists the NearestNeighbourSearchs I want to choose from
 weka.core.neighboursearch.NearestNeighbourSearch=\
  weka.core.neighboursearch.BallTree,\
  weka.core.neighboursearch.CoverTree,\
  weka.core.neighboursearch.KDTree,\
  weka.core.neighboursearch.LinearNNSearch
- 
+
 # Lists the ResultMatrixs I want to choose from
 weka.experiment.ResultMatrix=\
  weka.experiment.ResultMatrixCSV,\
@@ -56,17 +56,17 @@ weka.experiment.ResultMatrix=\
  weka.experiment.ResultMatrixLatex,\
  weka.experiment.ResultMatrixPlainText,\
  weka.experiment.ResultMatrixSignificance
- 
+
 # Lists the ClusterDefinitions I want to choose from
 weka.datagenerators.ClusterDefinition=\
  weka.datagenerators.clusterers.SubspaceClusterDefinition
- 
+
 # Lists the BallTreeConstructors I want to choose from
 weka.core.neighboursearch.balltrees.BallTreeConstructor=\
  weka.core.neighboursearch.balltrees.BottomUpConstructor,\
  weka.core.neighboursearch.balltrees.MiddleOutConstructor,\
  weka.core.neighboursearch.balltrees.TopDownConstructor
- 
+
 # Lists the ASEvaluations I want to choose from
 weka.attributeSelection.ASEvaluation=\
  weka.attributeSelection.CfsSubsetEval,\
@@ -88,7 +88,7 @@ weka.attributeSelection.ASEvaluation=\
  weka.attributeSelection.SymmetricalUncertAttributeEval,\
  weka.attributeSelection.SymmetricalUncertAttributeSetEval,\
  weka.attributeSelection.WrapperSubsetEval
- 
+
 # Lists the VisualizePlugins I want to choose from
 weka.gui.visualize.plugins.VisualizePlugin=\
 
@@ -103,8 +103,8 @@ weka.gui.visualize.plugins.GraphVisualizePlugin=\
 
 # Lists the ErrorVisualizePlugins I want to choose from
 weka.gui.visualize.plugins.ErrorVisualizePlugin=\
- 
- 
+
+
 # Lists the Loaders I want to choose from
 weka.core.converters.Loader=\
  weka.core.converters.ArffLoader,\
@@ -116,13 +116,13 @@ weka.core.converters.Loader=\
  weka.core.converters.SerializedInstancesLoader,\
  weka.core.converters.TextDirectoryLoader,\
  weka.core.converters.XRFFLoader
- 
+
 # Lists the Tokenizers I want to choose from
 weka.core.tokenizers.Tokenizer=\
  weka.core.tokenizers.AlphabeticTokenizer,\
  weka.core.tokenizers.NGramTokenizer,\
  weka.core.tokenizers.WordTokenizer
- 
+
 # Lists the Classifiers I want to choose from
 weka.classifiers.Classifier=\
  weka.classifiers.bayes.AODE,\
@@ -219,6 +219,7 @@ weka.classifiers.Classifier=\
  weka.classifiers.trees.DecisionStump,\
  weka.classifiers.trees.FT,\
  weka.classifiers.trees.Id3,\
+ weka.classifiers.trees.Id3Custom,\
  weka.classifiers.trees.J48,\
  weka.classifiers.trees.J48graft,\
  weka.classifiers.trees.LADTree,\
@@ -249,14 +250,14 @@ weka.classifiers.evaluation.output.prediction.AbstractOutput=\
   weka.classifiers.evaluation.output.prediction.HTML,\
   weka.classifiers.evaluation.output.prediction.Null,\
   weka.classifiers.evaluation.output.prediction.PlainText
- 
+
 # Lists the DistanceFunctions I want to choose from
 weka.core.DistanceFunction=\
  weka.core.ChebyshevDistance,\
  weka.core.EditDistance,\
  weka.core.EuclideanDistance,\
  weka.core.ManhattanDistance
- 
+
 # Lists the Clusterers I want to choose from
 weka.clusterers.Clusterer=\
  weka.clusterers.CLOPE,\
@@ -270,7 +271,7 @@ weka.clusterers.Clusterer=\
  weka.clusterers.sIB,\
  weka.clusterers.SimpleKMeans,\
  weka.clusterers.XMeans
- 
+
 # Lists the UnsupervisedFilters I want to choose from
 weka.filters.UnsupervisedFilter=\
  weka.filters.unsupervised.attribute.Add,\
@@ -326,26 +327,26 @@ weka.filters.UnsupervisedFilter=\
  weka.filters.unsupervised.instance.ReservoirSample,\
  weka.filters.unsupervised.instance.SparseToNonSparse,\
  weka.filters.unsupervised.instance.SubsetByExpression
- 
+
 # Lists the RegOptimizers I want to choose from
 weka.classifiers.functions.supportVector.RegOptimizer=\
  weka.classifiers.functions.supportVector.RegSMO,\
  weka.classifiers.functions.supportVector.RegSMOImproved
- 
+
 # Lists the JComponentWriters I want to choose from
 weka.gui.visualize.JComponentWriter=\
  weka.gui.visualize.BMPWriter,\
  weka.gui.visualize.JPEGWriter,\
  weka.gui.visualize.PNGWriter,\
  weka.gui.visualize.PostscriptWriter
- 
+
 # Lists the Stemmers I want to choose from
 weka.core.stemmers.Stemmer=\
  weka.core.stemmers.IteratedLovinsStemmer,\
  weka.core.stemmers.LovinsStemmer,\
  weka.core.stemmers.NullStemmer,\
  weka.core.stemmers.SnowballStemmer
- 
+
 # Lists the Kernels I want to choose from
 weka.classifiers.functions.supportVector.Kernel=\
  weka.classifiers.functions.supportVector.NormalizedPolyKernel,\
@@ -356,12 +357,12 @@ weka.classifiers.functions.supportVector.Kernel=\
  weka.classifiers.functions.supportVector.StringKernel,\
  weka.classifiers.mi.supportVector.MIPolyKernel,\
  weka.classifiers.mi.supportVector.MIRBFKernel
- 
+
 # Lists the Testers I want to choose from
 weka.experiment.Tester=\
  weka.experiment.PairedCorrectedTTester,\
  weka.experiment.PairedTTester
- 
+
 # Lists the ASSearchs I want to choose from
 weka.attributeSelection.ASSearch=\
  weka.attributeSelection.BestFirst,\
@@ -376,14 +377,14 @@ weka.attributeSelection.ASSearch=\
  weka.attributeSelection.RankSearch,\
  weka.attributeSelection.ScatterSearchV1,\
  weka.attributeSelection.SubsetSizeForwardSelection
- 
+
 # Lists the SplitEvaluators I want to choose from
 weka.experiment.SplitEvaluator=\
  weka.experiment.ClassifierSplitEvaluator,\
  weka.experiment.CostSensitiveClassifierSplitEvaluator,\
  weka.experiment.DensityBasedClustererSplitEvaluator,\
  weka.experiment.RegressionSplitEvaluator
- 
+
 # Lists the DataGenerators I want to choose from
 weka.datagenerators.DataGenerator=\
  weka.datagenerators.classifiers.classification.Agrawal,\
@@ -395,7 +396,7 @@ weka.datagenerators.DataGenerator=\
  weka.datagenerators.classifiers.regression.MexicanHat,\
  weka.datagenerators.clusterers.BIRCHCluster,\
  weka.datagenerators.clusterers.SubspaceCluster
- 
+
 # Lists the AbstractFileLoaders I want to choose from
 weka.core.converters.AbstractFileLoader=\
  weka.core.converters.ArffLoader,\
@@ -405,7 +406,7 @@ weka.core.converters.AbstractFileLoader=\
  weka.core.converters.MatlabLoader,\
  weka.core.converters.SerializedInstancesLoader,\
  weka.core.converters.XRFFLoader
- 
+
 # Lists the AbstractFileSavers I want to choose from
 weka.core.converters.AbstractFileSaver=\
  weka.core.converters.ArffSaver,\
@@ -415,25 +416,25 @@ weka.core.converters.AbstractFileSaver=\
  weka.core.converters.MatlabSaver,\
  weka.core.converters.SerializedInstancesSaver,\
  weka.core.converters.XRFFSaver
- 
+
 # Lists the BayesNetEstimators I want to choose from
 weka.classifiers.bayes.net.estimate.BayesNetEstimator=\
  weka.classifiers.bayes.net.estimate.BayesNetEstimator,\
  weka.classifiers.bayes.net.estimate.BMAEstimator,\
  weka.classifiers.bayes.net.estimate.MultiNomialBMAEstimator,\
  weka.classifiers.bayes.net.estimate.SimpleEstimator
- 
+
 # Lists the MainMenuExtensions I want to choose from
 weka.gui.MainMenuExtension=\
- 
- 
+
+
 # Lists the KDTreeNodeSplitters I want to choose from
 weka.core.neighboursearch.kdtrees.KDTreeNodeSplitter=\
  weka.core.neighboursearch.kdtrees.KMeansInpiredMethod,\
  weka.core.neighboursearch.kdtrees.MedianOfWidestDimension,\
  weka.core.neighboursearch.kdtrees.MidPointOfWidestDimension,\
  weka.core.neighboursearch.kdtrees.SlidingMidPointOfWidestSide
- 
+
 # Lists the Associators I want to choose from
 weka.associations.Associator=\
  weka.associations.Apriori,\
@@ -442,7 +443,7 @@ weka.associations.Associator=\
  weka.associations.HotSpot,\
  weka.associations.PredictiveApriori,\
  weka.associations.Tertius
- 
+
 # Lists the ResultProducers I want to choose from
 weka.experiment.ResultProducer=\
  weka.experiment.AveragingResultProducer,\
@@ -450,12 +451,12 @@ weka.experiment.ResultProducer=\
  weka.experiment.DatabaseResultProducer,\
  weka.experiment.LearningRateResultProducer,\
  weka.experiment.RandomSplitResultProducer
- 
+
 # Lists the DensityBasedClusterers I want to choose from
 weka.clusterers.DensityBasedClusterer=\
  weka.clusterers.EM,\
  weka.clusterers.MakeDensityBasedClusterer
- 
+
 # Lists the Filters I want to choose from
 weka.filters.Filter=\
  weka.filters.AllFilter,\
@@ -530,7 +531,7 @@ weka.filters.Filter=\
  weka.filters.unsupervised.instance.ReservoirSample,\
  weka.filters.unsupervised.instance.SparseToNonSparse,\
  weka.filters.unsupervised.instance.SubsetByExpression
- 
+
 # Lists the Estimators I want to choose from
 weka.estimators.Estimator=\
  weka.estimators.DiscreteEstimator,\
@@ -538,7 +539,7 @@ weka.estimators.Estimator=\
  weka.estimators.MahalanobisEstimator,\
  weka.estimators.NormalEstimator,\
  weka.estimators.PoissonEstimator
- 
+
 # Lists the Univariate Density Estimators I want to choose from
 weka.estimators.UnivariateDensityEstimator= \
  weka.estimators.UnivariateNormalEstimator,\
@@ -564,4 +565,3 @@ weka.core.stopwords.StopwordsHandler=\
   weka.core.stopwords.Rainbow,\
   weka.core.stopwords.RegExpFromFile,\
   weka.core.stopwords.WordsFromFile
- 

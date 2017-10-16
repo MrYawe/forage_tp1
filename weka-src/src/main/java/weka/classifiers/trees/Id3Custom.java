@@ -367,9 +367,9 @@ public class Id3Custom extends AbstractClassifier implements
     }
     double entropy = 0;
     for (int j = 0; j < data.numClasses(); j++) {
-      if (classCounts[j] > 0) {
+      //if (classCounts[j] > 0) {
         entropy += ( Math.pow(classCounts[j] / (double)data.numInstances(), Id3Custom.m_alpha) - 1);
-      }
+      //}
     }
     return entropy * Math.pow(Math.pow(2., 1. - Id3Custom.m_alpha) - 1., -1.);
   }

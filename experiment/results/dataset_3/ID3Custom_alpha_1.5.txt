@@ -1,0 +1,58 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.Id3Custom -A 1.5
+Relation:     kddcup.data_10_percent-weka.filters.unsupervised.attribute.RenameNominalValues-Rlabel-Nftp_write.:R2L., guess_passwd.:R2L., imap.:R2L., multihop.:R2L., phf.:R2L., spy.:R2L., warezclient.:R2L., warezmaster.:R2L.-weka.filters.unsupervised.attribute.RenameNominalValues-Rlabel-Nback.:DoS., land.:DoS., neptune.:DoS., pod.:DoS., smurf.:DoS., teardrop.:DoS.-weka.filters.unsupervised.attribute.RenameNominalValues-Rlabel-Nbuffer_overflow.:U2R., perl.:U2R., loadmodule.:U2R., rootkit.:U2R.-weka.filters.unsupervised.attribute.RenameNominalValues-Rlabel-Nipsweep.:Probing., nmap.:Probing., portsweep.:Probing., satan.:Probing.-weka.filters.unsupervised.attribute.Remove-R15-41-weka.filters.unsupervised.attribute.NumericToNominal-Rfirst-last-weka.filters.supervised.instance.Resample-B0.0-S26961-Z10.0-no-replacement-weka.filters.supervised.attribute.AttributeSelection-Eweka.attributeSelection.InfoGainAttributeEval-Sweka.attributeSelection.Ranker -T -1.7976931348623157E308 -N 5
+Instances:    49399
+Attributes:   6
+              src_bytes
+              service
+              dst_bytes
+              logged_in
+              protocol_type
+              label
+Test mode:    user supplied test set:  size unknown (reading incrementally)
+
+=== Evaluation on test set ===
+
+Time taken to test model on supplied test set: 0.04 seconds
+
+=== Summary ===
+
+Correctly Classified Instances       24296               98.3723 %
+Incorrectly Classified Instances        89                0.3604 %
+Kappa statistic                          0.9886
+Mean absolute error                      0.0006
+Root mean squared error                  0.0177
+Relative absolute error                  2.0278 %
+Root relative squared error             15.1114 %
+UnClassified Instances                 313                1.2673 %
+Total Number of Instances            24698     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,998    0,001    0,996      0,998    0,997      0,996    0,960     0,946     normal.
+                 0,000    0,000    0,000      0,000    0,000      0,000    0,500     0,000     U2R.
+                 0,000    0,000    0,000      0,000    0,000      0,000    ?         ?         loadmodule.
+                 0,000    0,000    0,000      0,000    0,000      0,000    ?         ?         perl.
+                 0,999    0,013    0,997      0,999    0,998      0,991    0,998     0,999     DoS.
+                 0,000    0,000    0,000      0,000    0,000      0,000    ?         ?         smurf.
+                 0,804    0,000    0,872      0,804    0,837      0,837    0,866     0,639     R2L.
+                 0,000    0,000    0,000      0,000    0,000      0,000    ?         ?         pod.
+                 0,000    0,000    0,000      0,000    0,000      0,000    ?         ?         teardrop.
+                 0,711    0,000    0,967      0,711    0,819      0,828    0,962     0,708     Probing.
+                 0,000    0,000    0,000      0,000    0,000      0,000    ?         ?         ipsweep.
+                 0,000    0,000    0,000      0,000    0,000      0,000    ?         ?         land.
+                 0,000    0,000    0,000      0,000    0,000      0,000    ?         ?         ftp_write.
+                 0,000    0,000    0,000      0,000    0,000      0,000    ?         ?         back.
+                 0,000    0,000    0,000      0,000    0,000      0,000    ?         ?         imap.
+                 0,000    0,000    0,000      0,000    0,000      0,000    ?         ?         satan.
+                 0,000    0,000    0,000      0,000    0,000      0,000    ?         ?         phf.
+                 0,000    0,000    0,000      0,000    0,000      0,000    ?         ?         nmap.
+                 0,000    0,000    0,000      0,000    0,000      0,000    ?         ?         multihop.
+                 0,000    0,000    0,000      0,000    0,000      0,000    ?         ?         warezmaster.
+                 0,000    0,000    0,000      0,000    0,000      0,000    ?         ?         warezclient.
+                 0,000    0,000    0,000      0,000    0,000      0,000    ?         ?         spy.
+                 0,000    0,000    0,000      0,000    0,000      0,000    ?         ?         rootkit.
+Weighted Avg.    0,996    0,010    0,996      0,996    0,996      0,990    0,990     0,986     
+

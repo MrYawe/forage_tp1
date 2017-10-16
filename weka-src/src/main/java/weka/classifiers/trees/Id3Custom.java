@@ -106,7 +106,7 @@ public class Id3Custom extends AbstractClassifier implements
   private Attribute m_ClassAttribute;
 
   /** Default alpha value used to compute the Havrda-Charvat entropy*/
-  protected float m_alpha = 0.5f;
+  protected static float m_alpha = 0.5f;
 
   /**
    * Returns a string describing the classifier.
@@ -367,11 +367,11 @@ public class Id3Custom extends AbstractClassifier implements
     }
     double entropy = 0;
     for (int j = 0; j < data.numClasses(); j++) {
-      if (classCounts[j] > 0) {
-        entropy += ( Math.pow(classCounts[j] / (double)data.numInstances(), m_alpha) - 1);
-      }
+      //if (classCounts[j] > 0) {
+        entropy += ( Math.pow(classCounts[j] / (double)data.numInstances(), Id3Custom.m_alpha) - 1);
+      //}
     }
-    return entropy * Math.pow(Math.pow(2.,1.-m_alpha)-1., -1.);
+    return entropy * Math.pow(Math.pow(2., 1. - Id3Custom.m_alpha) - 1., -1.);
   }
 
   /**
@@ -574,13 +574,13 @@ public class Id3Custom extends AbstractClassifier implements
   public void setOptions(String[] options) throws Exception {
     String alphaString = Utils.getOption('A', options);
     if (alphaString.length() != 0) {
-      m_alpha = (new Float(alphaString)).floatValue();
-      if ((m_alpha <= 0) || (m_alpha >= 1)) {
+      Id3Custom.m_alpha = (new Float(alphaString)).floatValue();
+      if ((Id3Custom.m_alpha <= 0) || (Id3Custom.m_alpha >= 1)) {
         throw new Exception(
           "Alpha has to be greater than zero and smaller " + "than one!");
       }
     } else {
-      m_alpha = 0.5f;
+      Id3Custom.m_alpha = 0.5f;
     }
 
     super.setOptions(options);
@@ -597,7 +597,7 @@ public class Id3Custom extends AbstractClassifier implements
 
     Vector<String> options = new Vector<String>();
     options.add("-A");
-    options.add("" + m_alpha);
+    options.add("" + Id3Custom.m_alpha);
 
     Collections.addAll(options, super.getOptions());
 

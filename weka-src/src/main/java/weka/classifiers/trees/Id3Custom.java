@@ -129,7 +129,7 @@ public class Id3Custom extends AbstractClassifier implements
    *         explorer/experimenter gui
    */
   public String alphaTipText() {
-    return "The alpha factor used for ...";
+    return "The alpha factor used to compute the Havrda And Charvat entropy.";
   }
 
   /**
